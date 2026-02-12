@@ -7,8 +7,10 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Auth extends BaseController
 {
+    protected $data;
     public function login()
     {
-        return view('Auth/login');
+        $this->data['title'] = 'Login ||ArdhiSmart';
+        return view('Auth/login', $this->data);
     }
 }

@@ -12,6 +12,8 @@
     "controller-make" : "php spark make:controller",
     "model-make" : "php spark make:model",
     "migration-make" : "php spark make:migration",
+    "show-DB" : "php spark migrate:status",
+    "delete-DB" : "php spark migrate:rollback",
     "copy-to-pub": "copy-files-from-to --when-file-exists overwrite"
   },
   "repository": {

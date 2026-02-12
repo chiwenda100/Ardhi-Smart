@@ -28,12 +28,12 @@
                                 <h5 class="card-title text-center mb-4">Login</h5>
 
                                 <b-form-group label="Email:" label-for="emailInput">
-                                    <b-form-input id="emailInput" type="email" v-model="form.email"
+                                    <b-form-input id="emailInput" type="email" v-model="email"
                                         placeholder="Enter email" required></b-form-input>
                                 </b-form-group>
 
                                 <b-form-group label="Password:" label-for="passwordInput">
-                                    <b-form-input id="passwordInput" type="password" v-model="form.password"
+                                    <b-form-input id="passwordInput" type="password" v-model="password"
                                         placeholder="Enter password" required></b-form-input>
                                 </b-form-group>
 
@@ -52,25 +52,9 @@
     </div>
 
     <?php echo view('Auth/components/jsFile'); ?>
+    <?php echo view('Auth/loginFooter'); ?>
 
-    <script>
-        let app = new Vue({
-            el: '#app',
-            data: {
-                form: {
-                    email: '',
-                    password: ''
-                }
-            },
-            methods: {
-                login() {
-                    // Demo login function
-                    alert(`Email: ${this.form.email}\nPassword: ${this.form.password}`);
-                    // Here you can add axios POST request to your CI4 login controller
-                }
-            },
-        });
-    </script>
+    
 </body>
 
 </html>

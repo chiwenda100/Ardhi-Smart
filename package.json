@@ -14,7 +14,8 @@
     "migration-make" : "php spark make:migration",
     "show-DB" : "php spark migrate:status",
     "delete-DB" : "php spark migrate:rollback",
-    "copy-to-pub": "copy-files-from-to --when-file-exists overwrite"
+    "copy-to-pub": "copy-files-from-to --when-file-exists overwrite",
+    "sass": "sass --watch _dev/sass:public/style/css --style=compressed"
   },
   "repository": {
     "type": "git",

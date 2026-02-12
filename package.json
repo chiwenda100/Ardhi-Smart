@@ -9,11 +9,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "php spark serve --port 8081",
-    "controller-make" : "php spark make:controller",
-    "model-make" : "php spark make:model",
-    "migration-make" : "php spark make:migration",
-    "show-DB" : "php spark migrate:status",
-    "delete-DB" : "php spark migrate:rollback",
+    "controller-make": "php spark make:controller",
+    "model-make": "php spark make:model",
+    "migration-make": "php spark make:migration",
+    "show-DB": "php spark migrate:status",
+    "delete-DB": "php spark migrate:rollback",
     "copy-to-pub": "copy-files-from-to --when-file-exists overwrite",
     "sass": "sass --watch _dev/sass:public/style/css --style=compressed"
   },
@@ -34,10 +34,11 @@
     "bootstrap": "^5.3.8",
     "bootstrap-vue": "^2.23.1",
     "copy-files-from-to": "^4.0.0",
+    "jquery": "^3.7.1",
     "sass": "^1.97.3",
     "vue": "^2.7.16"
   },
-   "copyFilesSettings": [
+  "copyFilesSettings": [
     {
       "whenFileExists": "overwrite",
       "ignoreDotFilesAndFolders": false
@@ -63,6 +64,10 @@
     {
       "from": "node_modules/sass/**/*",
       "to": "public/node_modules/sass/"
+    },
+    {
+      "from": "node_modules/jquery/dist/**/*",
+      "to": "public/node_modules/jquery/"
     }
   ]
 }

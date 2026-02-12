@@ -10,5 +10,8 @@
 </head>
 <body>
     <h1> i am login testing page</h1>
+    
+    <?php echo view('Auth/components/jsFile'); ?>
+    <script></script>
 </body>
 </html>

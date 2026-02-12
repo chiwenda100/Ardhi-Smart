@@ -9,6 +9,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "php spark serve --port 8081",
+    "controller-make" : "php spark make:controller",
+    "model-make" : "php spark make:model",
+    "migration-make" : "php spark make:migration",
     "copy-to-pub": "copy-files-from-to --when-file-exists overwrite"
   },
   "repository": {

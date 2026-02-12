@@ -1,0 +1,13 @@
+DATABASE STRUCTURE OVERVIEW
+####Core Groups
+
+User & Access Control
+Land Registry
+Ownership & Blockchain Chain
+Transfer Transactions
+Verification
+Documents
+Disputes
+GIS Mapping
+Audit & Security
+Notifications

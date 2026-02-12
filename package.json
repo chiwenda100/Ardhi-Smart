@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "php spark serve --port 8081"
+    "start": "php spark serve --port 8081",
+    "copy-to-pub": "copy-files-from-to --when-file-exists overwrite"
   },
   "repository": {
     "type": "git",
@@ -29,5 +30,33 @@
     "copy-files-from-to": "^4.0.0",
     "sass": "^1.97.3",
     "vue": "^2.7.16"
-  }
+  },
+   "copyFilesSettings": [
+    {
+      "whenFileExists": "overwrite",
+      "ignoreDotFilesAndFolders": false
+    }
+  ],
+  "copyFiles": [
+    {
+      "from": "node_modules/axios/dist/**/*",
+      "to": "public/node_modules/axios/"
+    },
+    {
+      "from": "node_modules/bootstrap/dist/**/*",
+      "to": "public/node_modules/bootstrap/"
+    },
+    {
+      "from": "node_modules/bootstrap-vue/dist/**/*",
+      "to": "public/node_modules/bootstrap-vue/"
+    },
+    {
+      "from": "node_modules/vue/dist/**/*",
+      "to": "public/node_modules/vue/"
+    },
+    {
+      "from": "node_modules/sass/**/*",
+      "to": "public/node_modules/sass/"
+    }
+  ]
 }

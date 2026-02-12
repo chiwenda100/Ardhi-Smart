@@ -18,8 +18,6 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-
-                            <!-- Bootstrap-Vue Login Form -->
                             <b-form @submit.prevent="login">
                                 <div class="text-center mb-3">
                                     <img src="<?php echo base_url('/style/images/logo_2.png'); ?>" alt="Logo"
@@ -42,7 +40,7 @@
                                 <button type="submit" class="btn login-btn btn-primary" style="margin-top: 0.5rem;width: 100%;">Login</button>
 
                                 <p class="mt-3 text-center text-muted">
-                                    Forgot password? <a href="#">Reset</a>
+                                    I don't have an account? <a href="#">Register</a>
                                 </p>
                             </b-form>
 

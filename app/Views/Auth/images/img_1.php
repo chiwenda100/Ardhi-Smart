@@ -1,0 +1,1 @@
+<img src="/style/images/land_2.jpg" class="img-fluid rounded-start" alt="...">

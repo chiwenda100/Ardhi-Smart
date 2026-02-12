@@ -10,7 +10,7 @@ class Auth extends BaseController
     protected $data;
     public function login()
     {
-        $this->data['title'] = 'Login ||ArdhiSmart';
+        $this->data['title'] = 'Login || GeoTrust';
         return view('Auth/login', $this->data);
     }
 }

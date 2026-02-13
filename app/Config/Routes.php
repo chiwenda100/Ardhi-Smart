@@ -10,3 +10,4 @@ use CodeIgniter\Router\RouteCollection;
 //AUTH
 $routes->get('/', 'Auth::login');
 $routes->get('/auth_login', 'Auth::login');
+$routes->post('/check_user', 'Auth::check');

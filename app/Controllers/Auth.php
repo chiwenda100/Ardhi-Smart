@@ -13,4 +13,7 @@ class Auth extends BaseController
         $this->data['title'] = 'Login || GeoTrust';
         return view('Auth/login', $this->data);
     }
+    public function check(){
+        
+    }
 }

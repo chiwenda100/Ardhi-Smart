@@ -6,10 +6,18 @@
             password: '',
         },
         methods: {
-            login() {
-                // Demo login function
-                alert(`Email: ${this.form.email}\nPassword: ${this.form.password}`);
-                // Here you can add axios POST request to your CI4 login controller
+            onPressedLogin(){
+                let formData = new FormData();
+                formData.append('email', this.email);
+                formData.append('password', this.password);
+
+                axios.post('/check_user', formData).then(res=>{
+                    console.log(res);
+                    
+                }).catch(err=>{
+                    console.error(err);
+                    
+                })
             }
         },
     });

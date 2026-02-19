@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/chiwenda100/Ardhi-Smart#readme",
   "dependencies": {
+    "admin-lte": "^4.0.0-rc6",
     "axios": "^1.13.5",
     "bootstrap": "^5.3.8",
     "bootstrap-vue": "^2.23.1",
@@ -68,6 +69,10 @@
     {
       "from": "node_modules/jquery/dist/**/*",
       "to": "public/node_modules/jquery/"
+    },
+    {
+      "from": "node_modules/admin-lte/**/*",
+      "to": "public/node_modules/admin-lte/"
     }
   ]
 }

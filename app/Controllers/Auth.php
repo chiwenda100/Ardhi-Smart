@@ -50,5 +50,14 @@ class Auth extends BaseController
         }
     }
 
+    public function dashboard(){
+        $this->data['title'] = 'Dashboard || GeoTrust';
+        return view('Admin_panel/home', $this->data);
+    }
 
+    public function logout(){
+        session()->destroy();
+        $this->data['title'] = 'Login || GeoTrust';
+        return view('Auth/login', $this->data);
+    }
 }

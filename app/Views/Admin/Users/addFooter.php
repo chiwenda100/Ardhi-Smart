@@ -22,32 +22,35 @@
                     value: 0,
                 }
             ],
-            rolesOptions: [
-                 {
-                    text: '--Select Roles--',
-                    value: null,
-                },
-                {
-                    text: 'System Administrator',
-                    value: 'System Administrator',
-                },
-                {
-                    text: 'Director',
-                    value: 'Director',
-                },
-                {
-                    text: 'Manager',
-                    value: 'Manager',
-                }
-            ],
+            rolesOptions: [],
         },
-        mounted(){},
+        mounted(){
+            this.fetchAllRoles();
+        },
         methods:{
             modalShowAddNewUser(){
                 this.modalShowAddUser = true;
             },
             onPressedAddUser(){
 
+            },
+            fetchAllRoles(){
+                axios.get('/fetch_data_roles_on_database').then(res=>{
+                    let roles = res.data.roles;
+                    this.rolesOptions = [
+                        { text: '--Select Roles--', value: null }
+                    ];
+                    roles.forEach(role => {
+                        this.rolesOptions.push({
+                            text: role.name,
+                            value: role.id,
+                        });
+                    });
+
+                }).catch(err=>{
+                    console.error(err);
+                    
+                });
             }
 
         },

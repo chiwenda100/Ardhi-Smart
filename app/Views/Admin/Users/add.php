@@ -99,7 +99,7 @@
                 <!-- form add -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <b-modal v-model="modalShowAddUser" class="px-3" @ok="onPressedAddUser()" ok-title="Create User" title="User Management || Add New User" header-class="text-center fw-bold fs-5" hide-header-close header-bg-variant="primary" header-text-variant="light">
+                        <b-modal v-model="modalShowAddUser" class="px-3" @ok="onPressedAddUser()" ok-title="Add New User" title="User Management || Add New User" header-class="text-center fw-bold fs-5" hide-header-close header-bg-variant="primary" header-text-variant="light">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="full_name">Full Name:

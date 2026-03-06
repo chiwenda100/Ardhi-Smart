@@ -39,7 +39,7 @@
                         <!--begin::Message-->
                         <div class="d-flex">
                             <div class="flex-shrink-0">
-                                <img src="./assets/img/user1-128x128.jpg" alt="User Avatar"
+                                <img src="#" alt="User Avatar"
                                     class="img-size-50 rounded-circle me-3" />
                             </div>
                             <div class="flex-grow-1">
@@ -60,7 +60,7 @@
                         <!--begin::Message-->
                         <div class="d-flex">
                             <div class="flex-shrink-0">
-                                <img src="./assets/img/user8-128x128.jpg" alt="User Avatar"
+                                <img src="#" alt="User Avatar"
                                     class="img-size-50 rounded-circle me-3" />
                             </div>
                             <div class="flex-grow-1">
@@ -83,7 +83,7 @@
                         <!--begin::Message-->
                         <div class="d-flex">
                             <div class="flex-shrink-0">
-                                <img src="./assets/img/user3-128x128.jpg" alt="User Avatar"
+                                <img src="#" alt="User Avatar"
                                     class="img-size-50 rounded-circle me-3" />
                             </div>
                             <div class="flex-grow-1">

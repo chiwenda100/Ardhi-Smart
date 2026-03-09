@@ -11,11 +11,46 @@ class Users extends BaseController
     protected $model;
     protected $data;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->model = new UserModel();
     }
 
-    public function add(){
+    public function add()
+    {
+        if (request()->getMethod() == 'POST') {
+            $full_name = $this->request->getPost('full_name');
+            $national_number = $this->request->getPost('national_number');
+            $role = $this->request->getPost('role');
+            $status = $this->request->getPost('status');
+            $phone = $this->request->getPost('mobile_number');
+            $email = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
+
+            if($full_name == '' || $national_number== '' || $role=='' || $status== '' ||$phone == '' || $email== '' || $password == ''){
+                return json_encode([
+                    'success' => false,
+                    'message' => 'Please Field Required Field'
+                ]);
+            }
+
+            $rows = [
+                'full_name' => $full_name,
+                'national_id' => $national_number,
+                'role_id' => $role,
+                'status' => $status,
+                'email' => $email,
+                'password' => $password,
+                'phone' => $phone,
+            ];
+
+            $this->model->insert($rows);
+            return json_encode([
+                'success' => true,
+                'message' => $full_name . "" . "Was successfully created",
+            ]);
+
+        }
 
     }
     public function index()

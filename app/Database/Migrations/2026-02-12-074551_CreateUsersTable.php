@@ -39,9 +39,9 @@ class CreateUsersTable extends Migration
                 'unsigned' => true
             ],
             'status' => [
-                'type' => 'ENUM',
-                'constraint' => ['active', 'inactive', 'suspended'],
-                'default' => 'active'
+                'type' => 'TINYINT',
+                'constraint' => 11,
+                
             ],
             'created_at' => [
                 'type' => 'DATETIME',

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use Config\Database;
 
 class UserModel extends Model
 {
@@ -13,6 +14,7 @@ class UserModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
+        'id',
         'full_name',
         'email',
         'phone',
@@ -38,5 +40,27 @@ class UserModel extends Model
             $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
         }
         return $data;
+    }
+
+    public function getDataForDataBase()
+    {
+        $db = Database::connect();
+        $builder = $db->table('users');
+        $builder->join('roles', 'roles.id = users.role_id', 'left outer');
+        $builder->select('
+            users.id AS userID,
+            users.full_name,
+            users.email,
+            users.phone,
+            users.national_id,
+            users.password,
+            roles.id AS rolesID,
+            users.status,
+            roles.name,
+            roles.description
+            '
+        );
+        $query = $builder->get();
+        return $query->getResultArray();
     }
 }

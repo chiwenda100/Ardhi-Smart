@@ -39,60 +39,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="odd">
-                                    <td class="dtr-control sorting_1" tabindex="0">1</td>
-                                    <td>Radon Khalid Simba</td>
-                                    <td>20020314145600069</td>
-                                    <td>0719042217</td>
-                                    <td>Administrator</td>
-                                    <td>Active</td>
+                                <tr v-for="(user, index) in users" :key="index">
+                                    <td class="dtr-control sorting_1" tabindex="0">{{index+1}}</td>
+                                    <td>{{user['full_name']}}</td>
+                                    <td>{{user['national_id']}}</td>
+                                    <td>{{user['phone']}}</td>
+                                    <td>{{user['name']}}</td>
+                                    <td>{{user['status']==1? 'Active':'Inactive'}}</td>
                                     <td>
-                                        <button>view</button>
-                                        <button>Edit</button>
-                                        <button>Delete</button>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="dtr-control sorting_1" tabindex="0">2</td>
-                                    <td>Tima Nipa</td>
-                                    <td>83743748378374</td>
-                                    <td>0683478393</td>
-                                    <td>Manager</td>
-                                    <td>InActive</td>
-                                    <td>
-                                        <button>view</button>
-                                        <button>Edit</button>
-                                        <button>Delete</button>
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                    <td>Firefox 2.0</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                    <td>1.7</td>
-                                    <td>
-                                        <button>view</button>
-                                        <button>Edit</button>
-                                        <button>Delete</button>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                    <td>Firefox 3.0</td>
-                                    <td>Win 2k+ / OSX.3+</td>
-                                    <td>1.9</td>
-                                    <td>A</td>
-                                    <td>1.7</td>
-                                    <td>
-                                        <button>view</button>
-                                        <button>Edit</button>
-                                        <button>Delete</button>
+                                        <b-button variant="primary">view</b-button>
+                                        <b-button variant="warning">Edit</b-button>
+                                        <b-button variant="danger">Delete</b-button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mt-3">
+                        <b-pagination v-model="currentPage" :total-rows="rows" align="right"></b-pagination>
                     </div>
                 </div>
 

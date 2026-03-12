@@ -17,6 +17,7 @@ $routes->get('/auth_logout', 'Auth::logout');
 $routes->get('/dashboard', 'Auth::dashboard');
 $routes->get('/users', 'Users::index');
 $routes->post('/user_add', 'Users::add');
+$routes->get('/fetch_all_user_in_database', 'Users::fetchAllUser');
 
 
 //ROLES

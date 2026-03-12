@@ -30,9 +30,11 @@
                 }
             ],
             rolesOptions: [],
+            users: [],
         },
         mounted() {
             this.fetchAllRoles();
+            this.fetchAllUser();
         },
         methods: {
             modalShowAddNewUser() {
@@ -43,8 +45,8 @@
                 this.nationalNumber = '';
                 this.mobileNumber = '';
                 this.password = '',
-                this.email = '',
-                this.statusSelected = null;
+                    this.email = '',
+                    this.statusSelected = null;
                 this.rolesSelected = null;
             },
             onPressedAddUser() {
@@ -71,7 +73,9 @@
                             this.variantMessageForAddUser = 'success';
                             this.messageForAddUser = res.data.message;
                             this.resetForm();
-                            
+                            this.fetchAllUser();
+
+
                         } else {
                             this.showAlertMessageForAddUser = true;
                             this.variantMessageForAddUser = 'danger';
@@ -101,7 +105,17 @@
                     console.error(err);
 
                 });
-            }
+            },
+
+            fetchAllUser() {
+                axios.get('/fetch_all_user_in_database').then(res => {
+                    this.users = res.data.info;
+                    console.log(this.users);
+
+                }).catch(err => {
+                    console.error(err);
+                });
+            },
 
         },
     });

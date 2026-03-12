@@ -27,7 +27,7 @@ class Users extends BaseController
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
 
-            if($full_name == '' || $national_number== '' || $role=='' || $status== '' ||$phone == '' || $email== '' || $password == ''){
+            if ($full_name == '' || $national_number == '' || $role == '' || $status == '' || $phone == '' || $email == '' || $password == '') {
                 return json_encode([
                     'success' => false,
                     'message' => 'Please Field Required Field'
@@ -57,5 +57,12 @@ class Users extends BaseController
     {
         $this->data['title'] = 'Users || GeoTrust';
         return view('Admin/Users/add', $this->data);
+    }
+
+    public function fetchAllUser(){
+         $information = $this->model->getDataForDataBase();
+         return json_encode([
+            'info' => $information, 
+         ]);
     }
 }

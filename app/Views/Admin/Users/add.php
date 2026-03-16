@@ -3,9 +3,22 @@
     <div class="app-content-header">
         <div class="container-fluid">
             <div id="app">
+
                 <!--  start button -->
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-md-4">
+                        <b-input-group>
+                            <b-input-group-prepend>
+                                <b-input-group-text>
+                                    <b-icon icon="search"></b-icon>
+                                </b-input-group-text>
+                            </b-input-group-prepend>
+
+                            <b-form-input v-model="search" type="search" placeholder="Search users..."
+                                @input="searchUser()"></b-form-input>
+                        </b-input-group>
+                    </div>
+                    <div class="col-sm-8 text-right">
                         <b-button class="float-end sm mb-1" variant='primary' @click="modalShowAddNewUser">Add New
                             User</b-button>
                     </div>
@@ -39,7 +52,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(user, index) in users" :key="index">
+                                <tr v-for="(user, index) in newUsers" :key="index">
                                     <td class="dtr-control sorting_1" tabindex="0">{{index+1}}</td>
                                     <td>{{user['full_name']}}</td>
                                     <td>{{user['national_id']}}</td>
@@ -49,7 +62,8 @@
                                     <td>
                                         <b-button variant="primary">view</b-button>
                                         <b-button variant="warning">Edit</b-button>
-                                        <b-button variant="danger">Delete</b-button>
+                                        <b-button variant="danger"
+                                            @click.prevent="onPressedDeleteAllUser(user.userID)">Delete</b-button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -58,7 +72,8 @@
                 </div>
                 <div class="row">
                     <div class="mt-3">
-                        <b-pagination v-model="currentPage" :total-rows="rows" align="right"></b-pagination>
+                        <b-pagination v-model="currentPage" :total-rows="totalRows" :per-page="perPage"
+                            @change="onPageChange" align="right" class="my-2"></b-pagination>
                     </div>
                 </div>
 

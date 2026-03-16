@@ -18,6 +18,8 @@ $routes->get('/dashboard', 'Auth::dashboard');
 $routes->get('/users', 'Users::index');
 $routes->post('/user_add', 'Users::add');
 $routes->get('/fetch_all_user_in_database', 'Users::fetchAllUser');
+$routes->get('/user_searching', 'Users::userSearch');
+$routes->delete('/delete_user/(:num)','Users::delete/$1' );
 
 
 //ROLES

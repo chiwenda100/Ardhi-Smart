@@ -65,4 +65,23 @@ class Users extends BaseController
             'info' => $information, 
          ]);
     }
+
+    public function delete($id){
+        $this->model->delete($id);
+        return json_encode([
+            'success'=> true,
+            'message'=> 'user deleted successfully',
+        ]);
+    }
+
+    public function userSearch(){
+        if (request()->getMethod() == 'GET') {
+            $searchWord = $this->request->getGet('searchWords');
+            $searchedUser = $this->model->searchUser($searchWord);
+            return json_encode([
+                'success'=> true,
+                'searchedUser'=> $searchedUser,
+            ]);
+        }
+    }
 }

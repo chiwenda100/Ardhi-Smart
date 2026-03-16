@@ -15,6 +15,8 @@
             email: '',
             statusSelected: null,
             rolesSelected: null,
+            search: '',
+             newUsers:[],
             statusOptions: [
                 {
                     text: '--Select Status--',
@@ -37,8 +39,34 @@
             this.fetchAllUser();
         },
         methods: {
+            searchUser(){
+                axios.get('/user_searching', {
+                    params:{
+                        searchWords: this.search,
+                    }
+                }).then(res=>{
+                    if(res.data.success){
+                        this.newUsers = res.data.searchedUser
+                        console.log(this.newUsers);
+                        
+                    }
+                    
+                }).catch(err=>{
+                    console.error(err);
+                    
+                });
+            },
             modalShowAddNewUser() {
                 this.modalShowAddUser = true;
+            },
+            onPressedDeleteAllUser(id) {
+                axios.delete(`/delete_user/${id}`).then(res => {
+                    if(res.data.success){
+                        this.fetchAllUser();
+                    }
+                   
+
+                }).catch();
             },
             resetForm() {
                 this.fullName = '';
@@ -110,7 +138,7 @@
             fetchAllUser() {
                 axios.get('/fetch_all_user_in_database').then(res => {
                     this.users = res.data.info;
-                    console.log(this.users);
+                    this.newUsers = this.users; 
 
                 }).catch(err => {
                     console.error(err);

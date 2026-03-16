@@ -63,4 +63,35 @@ class UserModel extends Model
         $query = $builder->get();
         return $query->getResultArray();
     }
+
+    public function searchUser($searchWord)
+    {
+        $db = Database::connect();
+        $builder = $db->table('users');
+        $builder->join('roles', 'roles.id = users.role_id', 'left outer');
+        $builder->select('
+            users.id AS userID,
+            users.full_name,
+            users.email,
+            users.phone,
+            users.national_id,
+            users.password,
+            roles.id AS rolesID,
+            users.status,
+            roles.name,
+            roles.description
+            '
+        );
+        $searchWord = trim($searchWord);
+        $builder->groupStart()
+            ->like('users.full_name', $searchWord)
+            ->orLike('users.email', $searchWord)
+            ->orLike('users.phone', $searchWord)
+            ->orLike('users.national_id', $searchWord)
+            ->orLike('roles.name', $searchWord)
+            ->groupEnd();
+        $query = $builder->get();
+        return $query->getResultArray();
+
+    }
 }

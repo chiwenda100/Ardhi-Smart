@@ -14,7 +14,7 @@
                                 </b-input-group-text>
                             </b-input-group-prepend>
 
-                            <b-form-input v-model="search" type="search" placeholder="Search users..."
+                            <b-form-input v-model="search" type="text" placeholder="Search users..."
                                 @input="searchUser()"></b-form-input>
                         </b-input-group>
                     </div>
@@ -61,7 +61,7 @@
                                     <td>{{user['status']==1? 'Active':'Inactive'}}</td>
                                     <td>
                                         <b-button variant="primary">view</b-button>
-                                        <b-button variant="warning">Edit</b-button>
+                                        <b-button variant="warning" @click="showModalEditUser(user.userID)">Edit</b-button>
                                         <b-button variant="danger"
                                             @click.prevent="onPressedDeleteAllUser(user.userID)">Delete</b-button>
                                     </td>
@@ -70,18 +70,102 @@
                         </table>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="mt-3">
                         <b-pagination v-model="currentPage" :total-rows="totalRows" :per-page="perPage"
                             @change="onPageChange" align="right" class="my-2"></b-pagination>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- form add -->
                 <div class="row">
                     <div class="col-lg-12">
                         <b-modal v-model="modalShowAddUser" class="px-3" @ok.prevent="onPressedAddUser"
                             ok-title="Add New User" title="User Management || Add New User"
+                            header-class="text-center fw-bold fs-5" hide-header-close header-bg-variant="primary"
+                            header-text-variant="light">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <b-alert :show="showAlertMessageForAddUser" :variant="variantMessageForAddUser">
+                                        {{messageForAddUser}}
+                                    </b-alert>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="full_name">Full Name:
+                                        <span style="color:red;">*</span>
+                                    </label>
+                                    <b-form-input type="text" v-model="fullName" id="fullName" name="fullName">
+                                    </b-form-input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="full_name">Email:
+                                        <span style="color:red;">*</span>
+                                    </label>
+                                    <b-form-input type="email" v-model="email" id="email" name="email">
+                                    </b-form-input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="password">Password:
+                                        <span style="color:red;">*</span>
+                                    </label>
+                                    <b-form-input type="password" v-model="password" id="password" name="password">
+                                    </b-form-input>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="nationalNumber">National Number:
+                                        <span style="color:red;">*</span></label>
+                                    <b-form-input type="number" v-model="nationalNumber" name="nationalNumber"
+                                        id="nationalNumber"></b-form-input>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="MobileNumber">Mobile Number
+                                        <span style="color:red;">*</span>
+                                    </label>
+                                    <b-form-input type="number" v-model="mobileNumber" name="mobileNumber"
+                                        id="mobileNumber"></b-form-input>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="Roles">Roles
+                                        <span style="color:red;">*</span>
+                                    </label>
+
+                                    <b-form-select v-model="rolesSelected" :options="rolesOptions"
+                                        class="form-control"></b-form-select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="Status">Status
+                                        <span style="color:red;">*</span>
+                                    </label>
+                                    <b-form-select v-model="statusSelected" :options="statusOptions"
+                                        class="form-control"></b-form-select>
+                                </div>
+                            </div>
+                        </b-modal>
+                    </div>
+                </div>
+                <!-- Edit Form modal -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <b-modal v-model="modalShowEditUser" class="px-3" @ok.prevent="onPressedEditUser"
+                            ok-title="Update" title="User Management || Edit User"
                             header-class="text-center fw-bold fs-5" hide-header-close header-bg-variant="primary"
                             header-text-variant="light">
                             <div class="row">

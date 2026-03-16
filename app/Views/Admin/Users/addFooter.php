@@ -16,7 +16,7 @@
             statusSelected: null,
             rolesSelected: null,
             search: '',
-             newUsers:[],
+            newUsers: [],
             statusOptions: [
                 {
                     text: '--Select Status--',
@@ -33,38 +33,69 @@
             ],
             rolesOptions: [],
             users: [],
+            modalShowEditUser: false,
+            userId: null,
         },
         mounted() {
             this.fetchAllRoles();
             this.fetchAllUser();
         },
         methods: {
-            searchUser(){
+            searchUser() {
                 axios.get('/user_searching', {
-                    params:{
+                    params: {
                         searchWords: this.search,
                     }
-                }).then(res=>{
-                    if(res.data.success){
+                }).then(res => {
+                    if (res.data.success) {
                         this.newUsers = res.data.searchedUser
                         console.log(this.newUsers);
-                        
+
                     }
-                    
-                }).catch(err=>{
+
+                }).catch(err => {
                     console.error(err);
-                    
+
                 });
             },
             modalShowAddNewUser() {
                 this.modalShowAddUser = true;
             },
+            showModalEditUser(id) {
+                this.fullName = '';
+                this.nationalNumber = '';
+                this.mobileNumber = '';
+                this.password = '';
+                this.email = '';
+                this.statusSelected = null;
+                this.rolesSelected = null;
+                this.userId = id;
+                // const user = this.newUsers.find(x => x.userID == id);
+                for (const user of this.newUsers) {
+                    if (user.userID == this.userId) {
+                        this.fullName = user.full_name;
+                        this.nationalNumber = user.national_id;
+                        this.mobileNumber = user.phone;
+                        this.password = '';
+                        this.email = user.email;
+                        this.statusSelected = user.status;
+                        this.rolesSelected = user.name;
+                    }
+                    console.log(user);
+                    
+
+                };
+                this.modalShowEditUser = true;
+            },
+            onPressedEditUser() {
+
+            },
             onPressedDeleteAllUser(id) {
                 axios.delete(`/delete_user/${id}`).then(res => {
-                    if(res.data.success){
+                    if (res.data.success) {
                         this.fetchAllUser();
                     }
-                   
+
 
                 }).catch();
             },
@@ -72,9 +103,9 @@
                 this.fullName = '';
                 this.nationalNumber = '';
                 this.mobileNumber = '';
-                this.password = '',
-                    this.email = '',
-                    this.statusSelected = null;
+                this.password = '';
+                this.email = '';
+                this.statusSelected = null;
                 this.rolesSelected = null;
             },
             onPressedAddUser() {
@@ -138,7 +169,7 @@
             fetchAllUser() {
                 axios.get('/fetch_all_user_in_database').then(res => {
                     this.users = res.data.info;
-                    this.newUsers = this.users; 
+                    this.newUsers = this.users;
 
                 }).catch(err => {
                     console.error(err);
